@@ -1,0 +1,19 @@
+{
+  "name": "getify",
+  "version": "0.0.1",
+  "description": "",
+  "main": "lib/getify.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/johnste/getify.git"
+  },
+  "author": "John Sterling <john@johnste.se>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/johnste/getify/issues"
+  },
+  "homepage": "https://github.com/johnste/getify#readme"
+}
