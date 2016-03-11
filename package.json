@@ -1,7 +1,6 @@
 {
   "name": "getify",
-  "version": "0.0.1",
-  "description": "",
+  "version": "0.0.3",
   "main": "lib/getify.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -15,5 +14,18 @@
   "bugs": {
     "url": "https://github.com/johnste/getify/issues"
   },
-  "homepage": "https://github.com/johnste/getify#readme"
+  "homepage": "https://github.com/johnste/getify#readme",
+  "keywords": [
+    "nested",
+    "value",
+    "deep",
+    "path",
+    "access",
+    "property",
+    "get",
+    "object",
+    "es6",
+    "proxy"
+  ],
+  "description": ""
 }
