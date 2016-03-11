@@ -2,6 +2,12 @@
 
 Getify is a utility to grab nested values from objects. Like lodash's `_.get`, or countless other variants. Getify uses [ES6 proxies](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Proxy) to enable a syntax that's closer to what you would get if you didn't use a library at all.
 
+[![NPM Version][npm-image]][npm-url]
+
+## Install
+
+`npm install getify`
+
 ## How to use
 
 ```
@@ -22,3 +28,5 @@ const defaultValue = getify(obj).nothing.here.as.well('oops!') // missing === "o
 
 `obj` is any valid javascript value: objects, strings, arrays, numbers. The path is any valid javascript path. If the path is not available in the object, getify will return `undefined` or the optionally provided default value.
 
+[npm-image]: https://img.shields.io/npm/v/getify.svg
+[npm-url]: https://npmjs.org/package/getify
