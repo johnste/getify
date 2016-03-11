@@ -27,5 +27,5 @@
     "es6",
     "proxy"
   ],
-  "description": ""
+  "description": "Getify is a utility to grab nested values from objects."
 }
