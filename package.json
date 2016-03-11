@@ -3,7 +3,7 @@
   "version": "0.0.4",
   "main": "lib/getify.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "./node_modules/.bin/karma start --single-run --browsers Chrome"
   },
   "repository": {
     "type": "git",
@@ -27,5 +27,17 @@
     "es6",
     "proxy"
   ],
-  "description": "Getify is a utility to grab nested values from objects."
+  "description": "Getify is a utility to grab nested values from objects.",
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "karma": "^0.13.22",
+    "karma-chai": "^0.1.0",
+    "karma-chrome-launcher": "^0.2.2",
+    "karma-firefox-launcher": "^0.1.7",
+    "karma-ie-launcher": "^0.2.0",
+    "karma-mocha": "^0.2.2",
+    "karma-requirejs": "^0.2.5",
+    "mocha": "^2.4.5",
+    "requirejs": "^2.1.22"
+  }
 }
