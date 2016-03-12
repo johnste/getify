@@ -2,11 +2,7 @@
 
 Getify is a utility to grab nested values from objects. Like lodash's `_.get`, or countless other variants. Getify uses [ES6 proxies](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Proxy) to enable a syntax that's closer to what you would get if you didn't use a library at all.
 
-[![NPM Version][npm-image]][npm-url]
-
-## Install
-
-`npm install getify`
+[![NPM Version][npm-image]][npm-url] [![Build Status](https://travis-ci.org/johnste/getify.svg?branch=master)](https://travis-ci.org/johnste/getify)
 
 ## How to use
 
@@ -17,10 +13,18 @@ const obj = {
     nested: ['the', 'values', 'are', 'here']
   }
 }
-const value = getify(obj).deeply.nested[1](); // value == "values"
-const missing = getify(obj).cant.find.anything.here() // missing === undefined
-const defaultValue = getify(obj).nothing.here.as.well('oops!') // missing === "oops!"
+const value = getify(obj).deeply.nested[1](); //  === "values"
+const missing = getify(obj).cant['find']anything.here() //  === undefined
+const defaultValue = getify(obj).nothing.here.as.well('oops!') //  === "oops!"
 ```
+
+## Browser and server support
+
+ES6 Proxies are currently supported by the latest stable version of Chrome, Firefox and Edge. It is not supported by Node 5.x or Safari yet.
+
+## Install
+
+`npm install getify`
 
 ## API
 
