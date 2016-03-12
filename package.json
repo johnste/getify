@@ -3,7 +3,7 @@
   "version": "0.0.4",
   "main": "lib/getify.js",
   "scripts": {
-    "test": "./node_modules/.bin/karma start --single-run --browsers Chrome"
+    "test": "./node_modules/.bin/karma start --single-run"
   },
   "repository": {
     "type": "git",
