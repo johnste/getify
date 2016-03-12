@@ -2,7 +2,7 @@
 
 Getify is a utility to grab nested values from objects. Like lodash's `_.get`, or countless other variants. Getify uses [ES6 proxies](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Proxy) to enable a syntax that's closer to what you would get if you didn't use a library at all.
 
-[![NPM Version][npm-image]][npm-url]
+[![NPM Version][npm-image]][npm-url] [![Build Status](https://travis-ci.org/johnste/getify.svg?branch=master)](https://travis-ci.org/johnste/getify)
 
 ## Install
 
