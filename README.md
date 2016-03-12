@@ -22,6 +22,8 @@ const defaultValue = getify(obj).nothing.here.as.well('oops!') //  === "oops!"
 
 ES6 Proxies are currently supported by the latest stable version of Chrome, Firefox and Edge. It is not supported by Node 5.x or Safari yet.
 
+[ES6 compatibility table: Proxy](http://kangax.github.io/compat-table/es6/#test-Proxy)
+
 ## Install
 
 `npm install getify`
