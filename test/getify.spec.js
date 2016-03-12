@@ -26,10 +26,10 @@ define(['lib/getify'], (getify) => {
 				},
 				f: [undefined, { g: "321" }]
 			}
-			expect(getify(obj).a.b(), 				'obj.a.b').to.be.undefined
-			expect(getify(obj).b[4](), 				'obj.b[4]').to.be.undefined
-			expect(getify(obj).d(), 				'obj.d').to.be.undefined
-			expect(getify(obj).f[1].x.x(), 			'obj.f[1].x.x').to.be.undefined
+			expect(getify(obj).a.b(), 		'obj.a.b').to.be.undefined
+			expect(getify(obj).b[4](), 		'obj.b[4]').to.be.undefined
+			expect(getify(obj).d(), 		'obj.d').to.be.undefined
+			expect(getify(obj).f[1].x.x(), 	'obj.f[1].x.x').to.be.undefined
 
 		})
 
