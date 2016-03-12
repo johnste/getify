@@ -14,7 +14,7 @@ const obj = {
   }
 }
 const value = getify(obj).deeply.nested[1](); //  === "values"
-const missing = getify(obj).cant['find']anything.here() //  === undefined
+const missing = getify(obj).cant['find'].anything.here() //  === undefined
 const defaultValue = getify(obj).nothing.here.as.well('oops!') //  === "oops!"
 ```
 
