@@ -6,7 +6,7 @@ Getify is a utility to grab nested values from objects. Like lodash's `_.get`, o
 
 ## How to use
 
-```
+```javascript
 import getify from 'getify'
 
 const obj = {
