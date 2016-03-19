@@ -38,7 +38,6 @@ define(['lib/getify'], (getify) => {
 			expect(getify(obj).b[4](), 'obj.b[4]').to.be.undefined
 			expect(getify(obj).d(), 'obj.d').to.be.undefined
 			expect(getify(obj).f[1].x.x(), 	'obj.f[1].x.x').to.be.undefined
-
 		})
 
 		it("should return the default value for missing properties if one is provided", () => {
@@ -55,7 +54,18 @@ define(['lib/getify'], (getify) => {
 			expect(getify(obj).b[4](obj), 'obj.b[4](obj)').to.be.deep.equal(obj)
 			expect(getify(obj).d(4), 'obj.d(4)').to.be.equal(4)
 			expect(getify(obj).f[1].x.x(undefined), 'obj.f[1].x.x(undefined)').to.be.undefined
+		})
 
+		it("should get return undefined if that is the value in the object", () => {
+			const obj = { a: undefined }
+			let result = getify(obj).a('default')
+			expect(result).to.be.equal(undefined)
+
+			result = getify(obj).a.b('default2')
+			expect(result).to.be.equal('default2')
+
+			result = getify(obj).b('default3')
+			expect(result).to.be.equal('default3')
 		})
 	})
 
@@ -165,6 +175,12 @@ define(['lib/getify'], (getify) => {
 			const result = getify(obj)[getify.first][getify.first][getify.first]()
 			expect(result).to.be.equal(5)
 		})
+
+		it("should work on deep non-existing paths", () => {
+			const obj = { a: 1 }
+			const result = getify(obj)[getify.first][getify.first][getify.first](5)
+			expect(result).to.be.equal(5)
+		})
 	})
 
 	describe("getify symbols: last", () => {
@@ -186,5 +202,55 @@ define(['lib/getify'], (getify) => {
 			const result = getify(obj)[getify.last][getify.last][getify.last]()
 			expect(result).to.be.equal(3)
 		})
+
+		it("should work on deep non-existing paths", () => {
+			const obj = { a: 1 }
+			const result = getify(obj)[getify.last][getify.last][getify.last](5)
+			expect(result).to.be.equal(5)
+		})
+	})
+
+	describe("documentation examples", () => {
+
+		it('should work for normal usage', () => {
+			const obj = {
+			  a: {
+			  	b: ['c', 'd'],
+			  	e: ['f', 'g']
+			  }
+			}
+
+			// Get existing value from object
+			expect(getify(obj).a.b[1]()).to.be.equal("d")
+
+			// Get undefined if path doesn't exist
+			expect(getify(obj).nothing.here()).to.be.equal(undefined)
+
+			// Use a default value for when
+			expect(getify(obj).nothing.here('oops!')).to.be.equal("oops!")
+		})
+
+		it('should work for advanced usage', () => {
+			const obj = {
+			  a: {
+			  	b: ['c', 'd', 'e'],
+			  	f: {0: 'g', 1: 'h'},
+			  }
+			}
+
+			// Use getify.all to get all properties on the current path
+			expect(getify(obj).a[getify.all][1]()).to.be.deep.equal(['d', 'h'])
+			expect(getify(obj).a[getify.all]()).to.be.deep.equal([['c', 'd', 'e'], {0: 'g', 1: 'h'}])
+
+			// Use getify.first to get first property on the current path
+			expect(getify(obj).a[getify.first][1]()).to.be.deep.equal('d')
+
+			// Use getify.first to get first property on the current path
+			expect(getify(obj).a[getify.last][1]()).to.be.deep.equal('h')
+
+			// Or combine them
+			expect(getify(obj).a[getify.all][getify.last]()).to.be.deep.equal(['e', 'h'])
+		})
+
 	})
 })

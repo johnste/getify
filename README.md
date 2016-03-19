@@ -10,16 +10,44 @@ Getify is a utility to grab nested values from objects. Like lodash's `_.get`, o
 import getify from 'getify'
 
 const obj = {
-  deeply: {
-    nested: ['the', 'values', 'are', 'here']
+  a: {
+  	b: ['c', 'd'],
+  	e: ['f', 'g']
   }
 }
 
-const value = getify(obj).deeply.nested[1]() //  === "values"
+// Get existing value from object
+getify(obj).a.b[1]() // returns "d"
 
-const missing = getify(obj).cant['find'].anything.here() //  === undefined
+// Get undefined if path doesn't exist
+getify(obj).nothing.here() // returns undefined
 
-const defaultValue = getify(obj).nothing.here.as.well('oops!') //  === "oops!"
+// Use a default value for when
+getify(obj).nothing.here('oops!') // returns "oops!"
+```
+
+## Advanced usage
+
+```javascript
+const obj = {
+  a: {
+  	b: ['c', 'd', 'e'],
+  	f: {0: 'g', 1: 'h'},
+  }
+}
+
+// Use getify.all to get all properties on the current path
+getify(obj).a[getify.all][1]() // returns ['d', 'h']
+getify(obj).a[getify.all]() // returns [['c', 'd', 'e'], {0: 'g', 1: 'h'}]
+
+// Use getify.first to get first property on the current path
+getify(obj).a[getify.first][1]() // returns 'd'
+
+// Use getify.first to get first property on the current path
+getify(obj).a[getify.last][1]() // returns 'h'
+
+// Or combine them
+getify(obj).a[getify.all][getify.last]() // returns ['e', 'h']
 ```
 
 ## Browser and server support
@@ -34,9 +62,17 @@ ES6 Proxies are currently supported by the latest stable version of Chrome, Fire
 
 ## API
 
-### `getify(obj).any.path['here'][3](optionalDefaultValue)`
+### Get a path from a value
 
-`obj` is any valid javascript value: objects, strings, arrays, numbers. The path is any valid javascript path. If the path is not available in the object, getify will return `undefined` or the optionally provided default value.
+`getify(value).any.path['here'][3](defaultValue)`
+
+`value` is any valid javascript value: objects, strings, arrays, numbers. The path is any valid javascript path. If the path is not available in the object, getify will return `undefined` or the default value. If the path exists and contains the value `undefined`, that will be returned regardless of the default value provided.
+
+### Symbols
+
+`getify.all` - get all keys on the current object. If there are no keys, this will result in an empty array
+`getify.first` - get the first key on the current object. The key is the first one returned from `Object.keys`
+`getify.last` - get the last key on the current object. The key is the last one returned from `Object.keys`
 
 [npm-image]: https://img.shields.io/npm/v/getify.svg
 [npm-url]: https://npmjs.org/package/getify
