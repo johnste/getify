@@ -1,6 +1,6 @@
 {
   "name": "getify",
-  "version": "0.0.6",
+  "version": "1.0.0",
   "main": "lib/getify.js",
   "scripts": {
     "test": "./node_modules/.bin/karma start --single-run",
