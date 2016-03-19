@@ -71,7 +71,9 @@ ES6 Proxies are currently supported by the latest stable version of Chrome, Fire
 ### Symbols
 
 `getify.all` - get all keys on the current object. If there are no keys, this will result in an empty array
+
 `getify.first` - get the first key on the current object. The key is the first one returned from `Object.keys`
+
 `getify.last` - get the last key on the current object. The key is the last one returned from `Object.keys`
 
 [npm-image]: https://img.shields.io/npm/v/getify.svg
