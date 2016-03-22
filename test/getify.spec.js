@@ -8,6 +8,18 @@ define(['lib/getify'], (getify) => {
 			expect(getify({a:23,b:12}).c(), 'obj.a').to.be.undefined
 		})
 
+		it("should to reuse getify object multiple times", () => {
+			const g = getify({a:23, b:{c:51}})
+			const ga = g.a
+			const gb = g.b
+			const gbc = g.b.c
+
+			expect(ga(), 'g.a').to.be.equal(23)
+			expect(gbc(), 'g.b.c').to.be.deep.equal(51)
+			expect(g.b.c(), 'g.b.c').to.be.equal(51)
+			expect(gb.c(), 'gb.c').to.be.equal(51)
+		})
+
 		it("should get existing properties from objects", () => {
 			const obj = {
 				a: 23,
@@ -237,6 +249,11 @@ define(['lib/getify'], (getify) => {
 			  	f: {0: 'g', 1: 'h'},
 			  }
 			}
+
+			// Save intermediate values paths (object destructuring works fine)
+			const { f, b } = getify(obj).a
+			expect(b[1]()).to.be.equal('d')
+			expect(f[0]()).to.be.equal('g')
 
 			// Use getify.all to get all properties on the current path
 			expect(getify(obj).a[getify.all][1]()).to.be.deep.equal(['d', 'h'])

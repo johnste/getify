@@ -22,7 +22,7 @@ getify(obj).a.b[1]() // returns "d"
 // Get undefined if path doesn't exist
 getify(obj).nothing.here() // returns undefined
 
-// Use a default value for when
+// Use a default value if path doesn't exist
 getify(obj).nothing.here('oops!') // returns "oops!"
 ```
 
@@ -35,6 +35,11 @@ const obj = {
   	f: {0: 'g', 1: 'h'},
   }
 }
+
+// Save intermediate values paths (object destructuring works fine)
+const { f, b } = getify(obj).a
+b[1]() // returns 'd'
+f[0]() // returns 'g'
 
 // Use getify.all to get all properties on the current path
 getify(obj).a[getify.all][1]() // returns ['d', 'h']
