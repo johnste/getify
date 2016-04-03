@@ -197,13 +197,25 @@ define(['lib/getify'], (getify) => {
 
 	describe("getify symbols: last", () => {
 
-		it("should get last property in simple objects", () => {
+    it("should get last property in simple objects", () => {
+      const obj = { i: { x: 1, y: 3 } }
+      const result = getify(obj)[getify.last].x()
+      expect(result).to.be.equal(1)
+    })
+
+		it("should get last property in simple nested objects", () => {
 			const obj = { a: { i: { x: 1, y: 3 } } }
-			const result = getify(obj).a[getify.last].x()
+			const result = getify(obj).a[getify.last].x();
 			expect(result).to.be.equal(1)
 		})
 
-		it("should get last property in arrays", () => {
+    it("should get last property in arrays", () => {
+      const obj = [2, 3]
+      const result = getify(obj)[getify.last]()
+      expect(result).to.be.equal(3)
+    })
+
+		it("should get last property in nested arrays", () => {
 			const obj = [1, [2, 3]]
 			const result = getify(obj)[1][getify.last]()
 			expect(result).to.be.equal(3)
