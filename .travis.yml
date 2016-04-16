@@ -6,11 +6,11 @@ addons:
   firefox: "latest"
 before_install:
   # Chrome stable
-  - wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
-  - echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" | sudo tee -a /etc/apt/sources.list
-  - sudo apt-get update -qq
-  - sudo apt-get install -y google-chrome-stable
-  - export CHROME_BIN=/usr/bin/google-chrome
+  #- wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
+  #- echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" | sudo tee -a /etc/apt/sources.list
+  #- sudo apt-get update -qq
+  #- sudo apt-get install -y google-chrome-stable
+  #- export CHROME_BIN=/usr/bin/google-chrome
 
 before_script:
   - export DISPLAY=:99.0
