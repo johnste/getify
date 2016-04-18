@@ -85,3 +85,7 @@ ES6 Proxies are currently supported by the latest stable version of Chrome, Fire
 
 [npm-image]: https://img.shields.io/npm/v/getify.svg
 [npm-url]: https://npmjs.org/package/getify
+
+## A note on performance
+
+Currently Getify is around 1-3 times slower than lodash `_.get` for simpler use cases in Chrome, and around 15-20 times slower in Firefox. Currently using getify is a two step process where the accessing paths on the Getified object creates a path in an array. When you execute the returned function Getify finds the nested value in the object in a way that's very close to how _.get works. I've been fiddling around trying to make this process go faster but my attempts thus far have had worse performance than the current one.
