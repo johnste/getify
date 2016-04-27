@@ -59,7 +59,7 @@ getify(obj).a[getify.all][getify.last]() // returns ['e', 'h']
 
 ## Browser and server support
 
-ES6 Proxies are currently supported by the latest stable version of Chrome, Firefox and Edge. It is not supported by Node 5.x or Safari yet.
+ES6 Proxy is currently supported by the latest stable version of Chrome, Firefox and Edge. It's also supported by Node 6.x. Safari doesn't support Proxies.
 
 [ES6 compatibility table: Proxy](http://kangax.github.io/compat-table/es6/#test-Proxy)
 
