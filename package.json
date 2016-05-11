@@ -3,7 +3,7 @@
   "version": "1.1.2",
   "main": "lib/getify.js",
   "scripts": {
-    "test": "./node_modules/.bin/karma start karma/karma.conf.js --single-run; jasmine .;",
+    "test": "mocha test/*.spec.js; ./node_modules/.bin/karma start karma/karma.conf.js --single-run",
     "test-watch": "./node_modules/.bin/karma start karma/karma.conf.js",
     "benchmark": "./node_modules/.bin/karma start karma/benchmark-karma.conf.js --single-run",
     "benchmark-watch": "./node_modules/.bin/karma start karma/benchmark-karma.conf.js"

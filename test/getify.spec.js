@@ -1,3 +1,8 @@
+if (typeof window === "undefined") {
+  var expect = require('chai').expect
+  var getify = require("../lib/getify")
+}
+
 describe("getify", () => {
   beforeEach(function() {
     //console.log('-----')
