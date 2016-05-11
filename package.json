@@ -4,6 +4,7 @@
   "main": "lib/getify.js",
   "scripts": {
     "test": "./node_modules/.bin/karma start karma/karma.conf.js --single-run",
+    "test-node": "jasmine .",
     "test-watch": "./node_modules/.bin/karma start karma/karma.conf.js",
     "benchmark": "./node_modules/.bin/karma start karma/benchmark-karma.conf.js --single-run",
     "benchmark-watch": "./node_modules/.bin/karma start karma/benchmark-karma.conf.js"
@@ -33,6 +34,7 @@
   "description": "Getify is a utility to grab nested values from objects.",
   "devDependencies": {
     "chai": "^3.5.0",
+    "jasmine": "^2.4.1",
     "karma": "^0.13.22",
     "karma-benchmark": "^0.4.0",
     "karma-benchmark-reporter": "^0.1.1",
